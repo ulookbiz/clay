@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@700&display=swap');
+    
+.logo {
+    display: flex;
+    align-items: center; 
+}
+    
+.logo__letter-l {
+    font-family: 'Lobster', cursive;
+    font-size: 96px;
+    font-style: italic;
+    color: #2196f3;
+    transform: rotate(-15deg);
+}
+    
+.logo__letter-b {
+    font-family: 'Oswald', sans-serif;
+    font-size: 72px;
+    font-weight: bold;
+    color: #ffd700;
+}

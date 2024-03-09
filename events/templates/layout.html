@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Главная страница</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/logo.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/article.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/publisher.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <div id="header">
+        <div id="logo">
+            <div class = "logo">
+                <span class="logo__letter-l">L</span>
+                <span class="logo__letter-b">B</span>
+            </div>    
+        </div>
+        
+        <nav id="navbar">
+            <a href="{{ url_for('main.home') }}" class="menu-option">Начало</a>
+            <a href="#" class="menu-option">Опция2</a>
+            <a href="{{ url_for('publisher_form.publisher') }}" class="menu-option">Издатель</a>
+            <a href="{{ url_for('article_form.article') }}" class="menu-option">Статья</a>
+        </nav>
+    </div>
+
+    <div id="sidebar">Боковая панель</div>
+    <div id="main-content">
+        <!-- Здесь будет динамически обновляемый контент -->
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

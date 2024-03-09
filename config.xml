@@ -1,0 +1,58 @@
+<project>
+    <name>Примерный проект</name>
+    <description>Структура проекта в формате XML. Инструменты: HTML, Javascript, Python, Flask, Ninja 2, SQLite, SQLAlchemy</description>
+    <author>L.Bart</author>
+    <created_date>2024-02-10</created_date>
+    <last_updated>2024-02-10</last_updated>
+
+    <folders>
+        <folder name="dbase">
+            <folder name="instance">
+                <file name="site.db"/>
+            </folder>
+            <folder name="migrations">
+                <folder name="versions">
+                    <file name="00819e0b4bf3_initial_migration.py"/>
+                    <file name="e13c40cc51d1_.py"/>
+                </folder>
+                <file name="alembic.ini"/>
+                <file name="env.py"/>
+                <file name="README"/>
+                <file name="script.py.mako"/>
+            </folder>
+            <file name="models.py"/>
+        </folder>
+
+        <folder name="events">
+            <folder name="content_generators">
+                <file name="admin_content.py"/>
+                <file name="home_content.py"/>
+                <file name="sample.py"/>
+            </folder>
+            <folder name="main">
+                <file name="__init__.py"/>
+                <file name="routes.py"/>
+            </folder>
+            <folder name="static">
+                <folder name="css">
+                    <file name="admin.css"/>
+                    <file name="logo.css"/>
+                    <file name="main.css"/>
+                </folder>
+                <folder name="js">
+                    <file name="main.js"/>
+                </folder>
+                <file name="favicon.ico"/>
+            </folder>
+            <folder name="templates">
+                <file name="admin.html"/>
+                <file name="home.html"/>
+                <file name="layout.html"/>
+            </folder>
+            <file name="__init__.py"/>
+        </folder>
+        <file name="config.xml"/>
+        <file name="launch_application.py"/>
+    </folders>
+    <file name="notes.txt"/>
+</project>

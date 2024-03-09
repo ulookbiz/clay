@@ -1,0 +1,96 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: white; /* Убедимся, что фон белый */
+}
+
+#header {
+    background-color: #AFEEEE;
+    position: fixed;
+    top: 0;
+    width: calc(100% - 20px); /* Уменьшение ширины */
+    height: calc(15% - 20px); /* Уменьшение высоты */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid blue; /* Синяя рамка */
+    margin: 10px; /* Отступ для видимости фона */
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+#logo {
+    background-color: darkcyan;
+    position: absolute;
+    left: 0px;
+    width: calc(20% - 20px); /* Изменено с calc(20% - 2px) на calc(20% - 20px) */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-option {
+    color: navy;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.menu-option:hover {
+    color: white;
+    background-color: red;
+}
+
+.right {
+    margin-left: auto;
+}
+
+#sidebar {
+    background-color: #AFEEEE;
+    position: fixed;
+    top: calc(15% + 10px); /* Смещение вниз */
+    left: 0;
+    width: calc(20% - 20px); /* Уменьшение ширины */
+    height: calc(85% - 30px); /* Уменьшение высоты */
+    padding: 20px;
+    box-sizing: border-box;
+    border: 2px solid blue; /* Синяя рамка */
+    margin-left: 10px; /* Отступ слева */
+    margin-top: 10px; /* Отступ сверху */
+    box-shadow: 4px 0 8px 0 rgba(0,0,0,0.2);
+}
+
+#main-content {
+    margin-top: calc(15% + 10px);
+    margin-left: calc(20% + 10px);
+    padding: 20px;
+    height: calc(100% - 15% - 10px);
+    overflow-y: auto;
+    background-color: white;
+}
+
+@media screen and (max-width: 768px) {
+    #navbar, #sidebar, #main-content {
+        width: 100%;
+    }
+    #sidebar {
+        height: auto;
+        position: relative;
+        top: auto;
+        margin-left: 0;
+        border: none;
+        box-shadow: none;
+    }
+    #main-content {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
