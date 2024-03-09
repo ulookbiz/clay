@@ -3,12 +3,16 @@ def PublisherInput():
         <form id="publisher_form" method="POST" action="publisher-save">
             {{ form.hidden_tag() }}
             <div>
-                {{ form.title.label }}
-                {{ form.title(id="title") }}
+                {{ form.pub_name.label }}
+                {{ form.pub_name() }}
                 </div>
             <div>
-                {{ form.content.label }}
-                {{ form.content(id="content") }}
+                {{ form.nick.label }}
+                {{ form.nick() }}
+            </div>
+            <div>
+                {{ form.pub_status.label }}
+                {{ form.pub_status() }}
             </div>
             <div>
                 {{ form.submit() }} 

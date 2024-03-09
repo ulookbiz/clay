@@ -8,7 +8,6 @@ app = Flask(__name__)
 def create_app():
 
     app.config['SECRET_KEY'] = 'Kjdyte_=pvugebkd'
-
     basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
     database_path = os.path.join(basedir, 'dbase', 'instance', 'site.db').replace('\\', '/')
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + database_path

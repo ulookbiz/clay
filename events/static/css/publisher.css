@@ -1,0 +1,33 @@
+form > div {
+        margin-bottom: 20px; /* Отступ между полями формы */
+    }
+
+    label {
+        display: block; /* Чтобы label занимал свою строку */
+        margin-bottom: 5px; /* Отступ между label и input */
+        font-size: 16px; /* Размер текста label */
+        color: #333; /* Цвет текста label */
+    }
+
+    button {
+        padding: 10px 20px; /* Внутренний отступ для кнопок */
+        border: none; /* Убрать стандартную границу кнопки */
+        border-radius: 5px; /* Скругление углов кнопки */
+        cursor: pointer; /* Курсор в виде указателя */
+        font-size: 16px; /* Размер текста внутри кнопки */
+    }
+
+    button[type="submit"] {
+        background-color: #4CAF50; /* Зеленый фон для кнопки отправки */
+        color: white; /* Белый текст для кнопки отправки */
+    }
+
+    button[type="button"] {
+        background-color: #f44336; /* Красный фон для кнопки отмены */
+        color: white; /* Белый текст для кнопки отмены */
+        margin-left: 10px; /* Отступ слева для кнопки отмены */
+    }
+
+    button:hover {
+        opacity: 0.8; /* Эффект при наведении на кнопку */
+    }

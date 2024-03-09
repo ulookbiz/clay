@@ -1,6 +1,5 @@
 # Определение моделей
 from datetime import datetime
-
 from events import db
 
 class Publisher(db.Model):
