@@ -66,10 +66,12 @@ def publisher_save():
     pub_name = request.form['pub_name']
     nick = request.form['nick']
     pub_status = request.form['pub_status']
+    reference = request.form['reference']
+    emblem = request.form['emblem']
 
     with app.app_context():
 #       добавление нового издателя
-        new_publisher = Publisher(name=pub_name, nick=nick, pub_status=pub_status)
+        new_publisher = Publisher(name=pub_name, nick=nick, pub_status=pub_status, reference=reference, emblem=emblem)
         db.session.add(new_publisher)
         db.session.commit()
         return redirect(url_for('main.home'))

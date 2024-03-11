@@ -15,6 +15,14 @@ def PublisherInput():
                 {{ form.pub_status() }}
             </div>
             <div>
+                {{ form.reference.label }}
+                {{ form.reference() }}
+            </div>
+            <div>
+                {{ form.emblem.label }}
+                {{ form.emblem() }}
+            </div>
+            <div>
                 {{ form.submit() }} 
             </div>
         </form>

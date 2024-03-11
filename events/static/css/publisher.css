@@ -1,33 +1,61 @@
+form {
+    width: 60%; /* Задаем ширину формы */
+    margin: 0 auto; /* Центрирование формы */
+    padding: 20px; /* Некоторый внутренний отступ */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Добавляем немного тени для визуального выделения */
+}
+
 form > div {
-        margin-bottom: 20px; /* Отступ между полями формы */
-    }
+    margin-bottom: 20px; /* Отступ между полями формы */
+    display: flex; /* Используем flexbox для выравнивания label и поля ввода */
+    align-items: center; /* Центрирование элементов по вертикали */
+}
 
-    label {
-        display: block; /* Чтобы label занимал свою строку */
-        margin-bottom: 5px; /* Отступ между label и input */
-        font-size: 16px; /* Размер текста label */
-        color: #333; /* Цвет текста label */
-    }
+label {
+    width: 20%; /* Задаем ширину метки */
+    min-width: 120px; /* Минимальная ширина метки */
+    margin-bottom: 0; /* Убираем отступ снизу метки */
+    font-size: 16px; /* Размер текста метки */
+    color: #333; /* Цвет текста метки */
+}
 
-    button {
-        padding: 10px 20px; /* Внутренний отступ для кнопок */
-        border: none; /* Убрать стандартную границу кнопки */
-        border-radius: 5px; /* Скругление углов кнопки */
-        cursor: pointer; /* Курсор в виде указателя */
-        font-size: 16px; /* Размер текста внутри кнопки */
-    }
+input[type="text"], input[type="number"] {
+    width: 100%; /* По умолчанию поле занимает всю доступную ширину */
+    padding: 8px; /* Небольшой внутренний отступ */
+    font-size: 16px; /* Размер текста внутри поля ввода */
+}
 
-    button[type="submit"] {
-        background-color: #4CAF50; /* Зеленый фон для кнопки отправки */
-        color: white; /* Белый текст для кнопки отправки */
-    }
+/* Специфические стили для разных полей ввода */
+/* Можно добавить классы в ваш Flask шаблон для более точного контроля */
+input[name="pub_name"] {
+    flex-grow: 5; /* Поле названия издателя в 5 раз больше */
+}
 
-    button[type="button"] {
-        background-color: #f44336; /* Красный фон для кнопки отмены */
-        color: white; /* Белый текст для кнопки отмены */
-        margin-left: 10px; /* Отступ слева для кнопки отмены */
-    }
+input[name="nick"] {
+    /* По умолчанию оставляем как есть, если нужно уменьшить, используйте flex-grow с меньшим значением */
+}
 
-    button:hover {
-        opacity: 0.8; /* Эффект при наведении на кнопку */
-    }
+input[name="pub_status"] {
+    flex-grow: 0.5; /* Статус издателя в 2 раза меньше */
+}
+
+input[name="reference"] {
+    flex-grow: 5; /* Основная ссылка в 5 раз больше */
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.8;
+}
