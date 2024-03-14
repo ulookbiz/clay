@@ -1,4 +1,5 @@
 from flask import render_template, Blueprint, jsonify, render_template_string, request, redirect, url_for
+from datetime import datetime
 from ..content_generators.home_content import GetHomeContent
 from ..content_generators.article_content import GetArticleContent
 from ..content_generators.article_input import ArticleInput
@@ -11,9 +12,7 @@ from pathlib import Path
 current_dir = Path(__file__).resolve().parent
 parent_dir = current_dir.parent.parent
 sys.path.append(str(parent_dir))
-from dbase.models import Articles
-from dbase.models import Publisher
-
+from dbase.models import Publisher, Articles, Images
 
 main = Blueprint('main', __name__)
 article_form = Blueprint('article_form', __name__)
@@ -36,19 +35,39 @@ def article():
 
 @article_form.route('/article-content')
 def article_content():
+    publishers = Publisher.query.all()
+    nicks = []
+    for pub in publishers:
+        nicks.append(pub.nick)
+
     form = GetArticleContent()
-    html_content = render_template_string(ArticleInput(), form=form)
+    html_content = render_template_string(ArticleInput(nicks), form=form)
     return jsonify(content = html_content)
 
 @article_form.route('/article-save', methods=['POST'])
 def article_save():
     title = request.form['title']
+    motto = request.form['motto']
+    ilink = request.form['ilink']
+    olink = request.form['olink']
     content = request.form['content']
+
+    date_posted_str = request.form['date_posted']
+    date_pub_str = request.form['date_pub']
+
+    # Преобразуем строки в объекты datetime
+    date_posted = datetime.strptime(date_posted_str, '%Y-%m-%d')
+    date_pub = datetime.strptime(date_pub_str, '%Y-%m-%d')
+
+    publisher_id = request.form['publisher_id']
+
     with app.app_context():
 #       создание новой статьи
-        new_article = Articles(title=title, content=content, user_id=1)
+        new_article = Articles(title=title, motto=motto, ilink=ilink, olink=olink, content=content,
+                               date_posted=date_posted, date_pub=date_pub, publisher_id=publisher_id)
         db.session.add(new_article)
         db.session.commit()
+
         return redirect(url_for('main.home'))
 
 @publisher_form.route("/publisher")

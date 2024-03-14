@@ -9,8 +9,10 @@ class Publisher(db.Model):
     pub_status = db.Column(db.Integer)  # статус издателя
     reference = db.Column(db.String(64))  # основная ссылка издателя
     emblem = db.Column(db.String(16))   # файл эмблемы
-    articles = db.relationship('Articles', backref='publisher', lazy=True)  # отношение к статьям
+    articles = db.relationship('Articles', backref='author', lazy=True)  # отношение к статьям
 
+    def __repr__(self):
+        return f"Publisher('{self.name}', '{self.nick}', '{self.emblem}')"
 
 class Articles(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -22,7 +24,10 @@ class Articles(db.Model):
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)  # время записи в базу данных
     date_pub = db.Column(db.DateTime)  # оригинальная дата статьи
     publisher_id = db.Column(db.Integer, db.ForeignKey('publisher.id'), nullable=False)
-    images = db.relationship('Images', backref='articles', lazy=True)  # отношение к изображениям
+    images = db.relationship('Images', backref='article', lazy=True)  # отношение к изображениям
+
+    def __repr__(self):
+        return f"Articles('{self.title}', '{self.motto}', '{self.emblem}', '{date_posted}')"
 
 
 class Images(db.Model):
@@ -31,3 +36,6 @@ class Images(db.Model):
     p_width = db.Column(db.Integer, nullable=False)    # ширина картинки
     p_height = db.Column(db.Integer, nullable=False)  # высота картинки
     articles_id = db.Column(db.Integer, db.ForeignKey('articles.id'), nullable=False)
+
+    def __repr__(self):
+        return f"Images('{self.i_name}'"
