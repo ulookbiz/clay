@@ -33,8 +33,8 @@ def ArticleInput(nicks):
                     {{ form.date_pub() }}
                 </div>    
                 <div>    
-                    {{ form.publisher_id.label }}
-                    {{ form.publisher_id() }}
+                    {{ form.publisher_nick.label }}
+                    {{ form.publisher_nick() }}
                 </div>
                 <div>
                     {{ form.submit() }} 

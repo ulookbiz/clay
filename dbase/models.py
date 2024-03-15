@@ -12,7 +12,7 @@ class Publisher(db.Model):
     articles = db.relationship('Articles', backref='author', lazy=True)  # отношение к статьям
 
     def __repr__(self):
-        return f"Publisher('{self.name}', '{self.nick}', '{self.emblem}')"
+        return f"Publisher('{self.id}', '{self.name}', '{self.nick}', '{self.emblem}')"
 
 class Articles(db.Model):
     id = db.Column(db.Integer, primary_key=True)

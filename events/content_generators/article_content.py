@@ -13,5 +13,5 @@ class GetArticleContent(FlaskForm):
     content = TextAreaField('Содержание статьи:', validators=[DataRequired(), Length(min=16)])
     date_posted = DateField('Дата регистрации статьи:', validators=[DataRequired()])
     date_pub = DateField('Дата оригинальной статьи:', validators=[DataRequired()])
-    publisher_id = StringField('ID издателя:', validators=[DataRequired()])
+    publisher_nick = StringField('Ник издателя:', validators=[DataRequired()])
     submit = SubmitField('Запись')

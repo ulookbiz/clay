@@ -58,13 +58,13 @@ def article_save():
     # Преобразуем строки в объекты datetime
     date_posted = datetime.strptime(date_posted_str, '%Y-%m-%d')
     date_pub = datetime.strptime(date_pub_str, '%Y-%m-%d')
-
-    publisher_id = request.form['publisher_id']
+    publisher_nick = request.form['publisher_nick']
+    pub = Publisher.query.filter(Publisher.nick == publisher_nick).first()
 
     with app.app_context():
 #       создание новой статьи
         new_article = Articles(title=title, motto=motto, ilink=ilink, olink=olink, content=content,
-                               date_posted=date_posted, date_pub=date_pub, publisher_id=publisher_id)
+                               date_posted=date_posted, date_pub=date_pub, publisher_id=pub.id)
         db.session.add(new_article)
         db.session.commit()
 
