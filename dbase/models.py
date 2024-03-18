@@ -24,18 +24,6 @@ class Articles(db.Model):
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)  # время записи в базу данных
     date_pub = db.Column(db.DateTime)  # оригинальная дата статьи
     publisher_id = db.Column(db.Integer, db.ForeignKey('publisher.id'), nullable=False)
-    images = db.relationship('Images', backref='article', lazy=True)  # отношение к изображениям
 
     def __repr__(self):
-        return f"Articles('{self.title}', '{self.motto}', '{self.emblem}', '{date_posted}')"
-
-
-class Images(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    i_name = db.Column(db.Integer)  # имя картинки - это просто число
-    p_width = db.Column(db.Integer, nullable=False)    # ширина картинки
-    p_height = db.Column(db.Integer, nullable=False)  # высота картинки
-    articles_id = db.Column(db.Integer, db.ForeignKey('articles.id'), nullable=False)
-
-    def __repr__(self):
-        return f"Images('{self.i_name}'"
+        return f"Articles('{self.title}', '{self.motto}', '{self.emblem}', '{self.date_posted}')"

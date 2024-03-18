@@ -6,18 +6,19 @@ from ..content_generators.article_input import ArticleInput
 from ..content_generators.publisher_content import GetPublisherContent
 from ..content_generators.publisher_input import PublisherInput
 from events import db, app
+from movefiles import rename_and_move_files
+from transform import transform
 
 import sys
 from pathlib import Path
 current_dir = Path(__file__).resolve().parent
 parent_dir = current_dir.parent.parent
 sys.path.append(str(parent_dir))
-from dbase.models import Publisher, Articles, Images
+from dbase.models import Publisher, Articles
 
 main = Blueprint('main', __name__)
 article_form = Blueprint('article_form', __name__)
 publisher_form = Blueprint('publisher_form', __name__)
-
 
 @main.route("/")
 @main.route("/home")
@@ -61,12 +62,21 @@ def article_save():
     publisher_nick = request.form['publisher_nick']
     pub = Publisher.query.filter(Publisher.nick == publisher_nick).first()
 
+    # преобразование основного текста
+    content = transform(content)
+    print(content)
+
+    raise SystemExit  # ===================================================================
+
     with app.app_context():
 #       создание новой статьи
         new_article = Articles(title=title, motto=motto, ilink=ilink, olink=olink, content=content,
                                date_posted=date_posted, date_pub=date_pub, publisher_id=pub.id)
         db.session.add(new_article)
         db.session.commit()
+
+#       перенос изображений в папку images
+        rename_and_move_files(new_article.id)
 
         return redirect(url_for('main.home'))
 
